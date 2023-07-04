@@ -27,6 +27,7 @@ public class Studenti2 {
 				
 				
 			}//chiude il ciclo
+			
 			pennarello.println("</ul>");
 			pennarello.close();
 			
@@ -34,7 +35,9 @@ public class Studenti2 {
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			
+			System.err.println("scusa utente, non è che hai sbagliato nome del file?");
 		}
 
 	}

@@ -8,20 +8,20 @@ public class ListaSpesa {
 
 	public static void main(String[] args) {
 		
-		File f = new File("documenti/canzoni.txt") ;
+		File f = new File("documenti/listaSpesa.txt") ;
 		
 		try {
 			Scanner input = new Scanner(f);
 			
 			while(input.hasNextLine()) {
 				
-				System.out.println(input.nextLine());
+				System.err.println(input.nextLine());
 				
 			}
 			
 			
 		} catch (FileNotFoundException e) {
-			System.err.println("File non trovato, verifica il nome file");
+			System.out.println("File non trovato, verifica il nome file" + e.getMessage());
 		}
 
 	}

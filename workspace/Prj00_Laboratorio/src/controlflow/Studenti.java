@@ -21,7 +21,7 @@ public class Studenti {
 			while (input.hasNextLine()) {
 				
 				String studente = input.nextLine();
-				System.out.println("E' presente lo studente " + studente );
+				System.out.println("E' presente lo studente " + studente.toUpperCase() );
 				String risposta = prof.nextLine();
 				
 				if (risposta.equals("s")) {
