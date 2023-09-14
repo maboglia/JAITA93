@@ -16,7 +16,9 @@ public class Main {
 		
 		GestioneEsami gestionale1 = new GestioneEsami();
 		
-		caricaStudenti(studentiLetti, gestionale1);
+		//caricaStudenti(studentiLetti, gestionale1);
+		
+		gestionale1.inizializzaDalDatabase();
 		
 		for (Studente studente : gestionale1.getStudenti()) {
 			System.out.println(gestionale1.stampaStudente(studente));

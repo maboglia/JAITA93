@@ -3,6 +3,7 @@ package controller;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import database.StudentiDB;
 import model.Esame;
 import model.Materia;
 import model.Studente;
@@ -14,10 +15,19 @@ public class GestioneEsami {
 	private ArrayList<Materia> insegnamenti;
 	private ArrayList<Esame> esami;
 	
+	private StudentiDB db;
+	
 	public GestioneEsami() {
 		this.studenti = new ArrayList<>();
 		this.insegnamenti= new ArrayList<>();
 		this.esami = new ArrayList<>();
+		this.db = new StudentiDB();
+	}
+	
+	public void inizializzaDalDatabase() {
+		this.db.inizializza();
+		;
+		System.out.println(this.db.getStudenti());
 	}
 	
 	public void addStudente(Studente s) {
