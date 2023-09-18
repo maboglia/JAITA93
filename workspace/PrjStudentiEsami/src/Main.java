@@ -9,10 +9,10 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Studente s = new Studente("Oscar");
-		Materia m = new Materia("SQL");
-		
-		ArrayList<Studente> studentiLetti = LeggiFile.leggiFileStudenti("files/studenti.txt");
+//		Studente s = new Studente("Oscar");
+//		Materia m = new Materia("SQL");
+//		
+//		ArrayList<Studente> studentiLetti = LeggiFile.leggiFileStudenti("files/studenti.txt");
 		
 		GestioneEsami gestionale1 = new GestioneEsami();
 		
@@ -23,6 +23,13 @@ public class Main {
 		for (Studente studente : gestionale1.getStudenti()) {
 			System.out.println(gestionale1.stampaStudente(studente));
 		}
+		
+		for (Materia m : gestionale1.getInsegnamenti()) {
+			System.out.println(m);
+		}
+		
+		
+		
 		
 
 	}//fine metodo main

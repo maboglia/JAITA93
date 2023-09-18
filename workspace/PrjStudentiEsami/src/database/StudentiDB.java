@@ -21,12 +21,13 @@ public class StudentiDB {
 		try {
 			Statement stat =  db.getConnessione().createStatement();
 			
-			ResultSet rs = stat.executeQuery("SELECT * FROM studenti");
+			ResultSet rs = stat.executeQuery("SELECT id, nome FROM studenti");
 			
 			while (rs.next()) {
 				
+				int id = rs.getInt(1);
 				String nome = rs.getString("nome");
-				Studente temp = new Studente(nome);
+				Studente temp = new Studente(id,nome);
 				studenti.add(temp);
 			}
 			

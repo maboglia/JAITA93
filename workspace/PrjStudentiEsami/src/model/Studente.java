@@ -2,29 +2,49 @@ package model;
 
 public class Studente implements Comparable<Studente>{
 
+	private int id;
 	private String nome;
 
-	public Studente() {
-		// TODO Auto-generated constructor stub
-	}
 	
-	public Studente(String nome) {
+
+	public Studente(int id, String nome) {
 		super();
+		this.id = id;
 		this.nome = nome;
 	}
 
-	public String getNome() {
-		return nome.toUpperCase();
+
+
+	public int getId() {
+		return id;
 	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
 
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Studente [nome=" + nome + "]";
+		return "Studente [id=" + id + ", nome=" + nome + "]";
 	}
+
+
 
 	@Override
 	public int compareTo(Studente altro) {
@@ -32,6 +52,9 @@ public class Studente implements Comparable<Studente>{
 		return altro.nome.compareTo(this.nome);
 	}
 	
+	
+
+
 	
 	
 }

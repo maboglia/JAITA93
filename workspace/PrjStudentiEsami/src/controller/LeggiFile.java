@@ -16,7 +16,7 @@ public class LeggiFile {
 			Scanner sc = new Scanner(f);
 			while(sc.hasNextLine()) {
 				String riga = sc.nextLine();
-				Studente temp = new Studente(riga);
+				Studente temp = new Studente(0, riga);
 				tempStudenti.add(temp);
 			}
 			

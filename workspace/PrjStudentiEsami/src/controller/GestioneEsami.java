@@ -1,8 +1,10 @@
 package controller;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import database.MateriaDAO;
 import database.StudentiDB;
 import model.Esame;
 import model.Materia;
@@ -16,12 +18,14 @@ public class GestioneEsami {
 	private ArrayList<Esame> esami;
 	
 	private StudentiDB db;
+	private MateriaDAO dao;
 	
 	public GestioneEsami() {
 		this.studenti = new ArrayList<>();
 		this.insegnamenti= new ArrayList<>();
 		this.esami = new ArrayList<>();
 		this.db = new StudentiDB();
+		this.dao = new MateriaDAO();
 	}
 	
 	public void inizializzaDalDatabase() {
@@ -48,6 +52,14 @@ public class GestioneEsami {
 	}
 
 	public ArrayList<Materia> getInsegnamenti() {
+		
+		try {
+			this.insegnamenti = this.dao.getMaterie();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return insegnamenti;
 	}
 

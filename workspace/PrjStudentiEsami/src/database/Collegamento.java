@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Collegamento {
 
-	private final String HOST = "jdbc:mysql://localhost:3306/jaita932";
+	private final String HOST = "jdbc:mysql://localhost:3306/jaita93";
 	private final String USER = "app_java";
 	private final String PASS = "java_2023!";
 	
