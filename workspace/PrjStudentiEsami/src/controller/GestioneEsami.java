@@ -28,6 +28,14 @@ public class GestioneEsami {
 		this.dao = new MateriaDAO();
 	}
 	
+	public void modificaMateria(String nuovoNome, int id) {
+		this.dao.updateMateria(nuovoNome.toUpperCase(), id);
+	}
+	
+	public void eliminaMateria(int id) {
+		this.dao.deleteMateria(id);
+	}
+	
 	public void inizializzaDalDatabase() {
 		this.db.inizializza();
 		;
@@ -38,8 +46,8 @@ public class GestioneEsami {
 		this.studenti.add(s);//aggiunge uno studente alla collezione
 	}
 	
-	public void addMateria(Materia m) {
-		this.insegnamenti.add(m);
+	public void addMateria(String nomeMateria) {
+		this.dao.addMateria(nomeMateria);
 	}
 	
 	public void addEsame(Esame e) {

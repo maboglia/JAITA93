@@ -19,6 +19,35 @@ public class MateriaDAO {
 		this.materie = new ArrayList<Materia>();
 	}
 
+	//CRUD
+	
+	//C - CREATE
+	
+	public Materia addMateria(String nome) {
+		
+		Materia m = new Materia(0, nome);
+		
+		try {
+			this.statement = db.getConnessione().createStatement();
+			this.statement.execute("INSERT INTO materie (nome) VALUES ('"+m.getNome()+"')");
+			
+			if (this.statement.getUpdateCount() == 1 )
+				System.out.println("RECORD INSERITO!!!");
+			else
+				System.out.println("RECORD NON INSERITO!!!");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return m;
+		
+	}
+	
+	
+	//R - READ (RETRIEVE) - getAll getMateriaById(int id)
+	
 	public ArrayList<Materia> getMaterie() throws SQLException {
 		
 		extracted();
@@ -39,7 +68,37 @@ public class MateriaDAO {
 		}
 	}
 	
+	//U - UPDATE
 	
+	public void updateMateria(String altroNome, int idRecord) {
+		
+		try {
+			this.statement = db.getConnessione().createStatement();
+			this.statement.execute("UPDATE materie set nome = '"+altroNome+"' WHERE id = " + idRecord);
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	//D - DELETE
+	
+	public void deleteMateria(int id) {
+		try {
+			this.statement = db.getConnessione().createStatement();
+			this.statement.execute("DELETE FROM materie WHERE id = " + id);
+			
+			if (this.statement.getUpdateCount() == 1 )
+				System.out.println("RECORD ELIMINATO!!!");
+			else
+				System.out.println("RECORD NON ELIMINATO!!!");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	
 }

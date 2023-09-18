@@ -18,19 +18,21 @@ public class Main {
 		
 		//caricaStudenti(studentiLetti, gestionale1);
 		
-		gestionale1.inizializzaDalDatabase();
+//		gestionale1.inizializzaDalDatabase();
+//		
+//		for (Studente studente : gestionale1.getStudenti()) {
+//			System.out.println(gestionale1.stampaStudente(studente));
+//		}
+//		
+//		for (Materia m : gestionale1.getInsegnamenti()) {
+//			System.out.println(m);
+//		}
 		
-		for (Studente studente : gestionale1.getStudenti()) {
-			System.out.println(gestionale1.stampaStudente(studente));
-		}
-		
-		for (Materia m : gestionale1.getInsegnamenti()) {
-			System.out.println(m);
-		}
-		
-		
-		
-		
+		//gestionale1.addMateria("Filosofia JAVA");
+		//gestionale1.eliminaMateria(7);
+		gestionale1.modificaMateria("c#", 6);
+		gestionale1.modificaMateria("c++", 8);
+		gestionale1.modificaMateria("dart", 9);
 
 	}//fine metodo main
 
