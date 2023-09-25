@@ -46,7 +46,8 @@ public class GestioneEsami {
 	}
 	
 	public void addStudente(Studente s) {
-		this.studenti.add(s);//aggiunge uno studente alla collezione
+		//this.studenti.add(s);//aggiunge uno studente alla collezione
+		this.db.addStudente(s);
 	}
 	
 	public void addMateria(String nomeMateria) {
@@ -64,6 +65,10 @@ public class GestioneEsami {
 		//this.esami.add(e);
 	}
 
+	public void eliminaStudenteById(int id) {
+		this.db.eliminaStudenteById(id);
+	}
+	
 	public ArrayList<Studente> getStudenti() {
 		//Collections.sort(studenti);
 		
