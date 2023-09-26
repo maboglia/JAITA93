@@ -10,7 +10,15 @@
 
 	<h1><%= request.getAttribute("titoloPagina") %></h1>
 	
-	<h2>Il numero fortunato è: <%= request.getAttribute("numeroFortunato") %></h2>
+	<form action="provami" method="post">
+	
+		<input type="text" name="titolo" placeholder="titolo"><br>
+		<input type="text" name="cantante" placeholder="cantante"><br>
+		<input type="submit" value="add">
+	
+	</form>
+
+
 
 </body>
 </html>

@@ -36,10 +36,31 @@ public class MVCController extends HttpServlet {
 		
 	}
 	
-	
-	
-	
-	
+
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		if (request.getParameter("titolo")!=null) {
+			
+			String titolo = request.getParameter("titolo");
+			String cantante = request.getParameter("cantante");
+			
+			Canzone c = new Canzone();
+			c.setTitolo(titolo);
+			c.setCantante(cantante);
+			
+			service.addCanzone(c);
+			System.out.println(titolo);
+		}
+		
+		doGet(request, response);
+	}
+
+
+
+
+
 
 	public List<Canzone> mostraCanzoni(){
 		return service.getCanzoni();

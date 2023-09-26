@@ -56,6 +56,7 @@ public class CanzoneDAOImpl implements CanzoneDAO {
 			this.ps = this.db.getConnessione().prepareStatement(ADD);
 			this.ps.setString(1, c.getTitolo());
 			this.ps.setString(2, c.getCantante());
+			this.ps.execute();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
