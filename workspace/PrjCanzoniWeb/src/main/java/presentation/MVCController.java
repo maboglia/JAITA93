@@ -28,7 +28,7 @@ public class MVCController extends HttpServlet {
 		
 		Random r = new Random();
 		
-		request.setAttribute("titoloPagina", "Il titolo di questa pagina è...");
+		request.setAttribute("titoloPagina", "Aggiungi nuova canzone");
 		
 		request.setAttribute("numeroFortunato", r.nextInt(1, 91));
 		

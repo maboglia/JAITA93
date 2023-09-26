@@ -15,6 +15,8 @@
 
 	<h1>Canzoni</h1>
 
+	<a href="provami">Add canzone</a>
+
 	<table>
 	  <tr>
 	    <th>Titolo</th>
@@ -24,8 +26,8 @@
 	  <% for (Canzone c : controller.mostraCanzoni()){ %>
 	  
 		  <tr>
-		    <td><%= c.getTitolo() %></td>
-		    <td><%= c.getCantante() %></td>
+		    <td> <a target="_blank" href="https://www.google.com/search?q=<%= c.getTitolo() %>"><%= c.getTitolo() %></a> </td>
+		    <td><a target="_blank" href="https://www.google.com/search?q=<%= c.getCantante() %>"><%= c.getCantante() %></a></td>
 		  </tr>
 	  
 	  <% } %>
