@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Serie tv</title>
+</head>
+<body>
+
+    <h1>Serie TV</h1>
+
+    <button id="cerca">Cerca</button>
+    <form action="" method="post">
+        <input type="text" name="titolo" id="titolo"><br>
+        <input type="text" name="genere" id="genere"><br>
+        <input type="text" name="rating" id="rating"><br>
+        <input type="text" name="locandina" id="locandina"><br>
+        <input type="submit" value="add">
+    </form>
+
+
+    <table id="tabella_serie">
+        <tr>
+            <th>Titolo</th>
+            <th>Genere</th>
+            <th>Rating</th>
+        </tr>
+    </table>
+
+    <script>
+
+        const TABELLA = document.getElementById('tabella_serie')
+        const URL_ESTERNO = 'https://api.tvmaze.com/singlesearch/shows?q='
+        const URL_INTERNO = 'http://localhost:8080/SerieTV/api/serie'
+        const BTN = document.getElementById('cerca')
+        const titolo = document.getElementById('titolo')
+        const genere = document.getElementById('genere')
+        const rating = document.getElementById('rating')
+        const locandina = document.getElementById('locandina')
+
+        BTN.onclick = function () {
+            
+            fetch(URL_ESTERNO + titolo.value)
+                .then(res=>res.json())
+                .then(res => {
+
+                    console.log(res);
+
+                    genere.value = res.genres.join(',')
+                    rating.value = res.rating.average
+                    locandina.value = res.image.medium
+
+
+                })
+
+
+        }
+
+
+
+
+
+        fetch(URL_INTERNO)
+            .then(res => res.json())
+            .then(res => {
+                for (const serie of res) {
+                    const TR = document.createElement('tr')
+                    const TD1 = document.createElement('td')
+                    TD1.textContent = serie.titolo
+                    const TD2 = document.createElement('td')
+                    TD2.textContent = serie.genere
+                    const TD3 = document.createElement('td')
+                    TD3.textContent = serie.rating
+                    TR.append(TD1, TD2, TD3)
+                    TABELLA.append(TR)
+                }
+            })
+
+
+    </script>
+
+</body>
+</html>
