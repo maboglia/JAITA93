@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+    <h1>Canzoni</h1>
+
+		<input type="text" placeholder="Aggiungi titolo" id="titolo"><br>
+		<input type="text" placeholder="Aggiungi cantante" id="cantante"><br>
+		<input type="text" placeholder="Aggiungi genere" id="genere"><br>
+		<input type="text" placeholder="Aggiungi anno" id="anno"><br>
+		<button id="btnAdd">Add</button><br>
+	
+
+
+    <table id="tabella">
+        <tr>
+            <th>Id</th>
+            <th>Titolo</th>
+            <th>Cantante</th>
+        </tr>
+    </table>
+
+    <script>
+
+        const TABELLA = document.getElementById('tabella');
+        const URL = '/api/canzoni';
+
+        const campoTitolo = document.getElementById('titolo')
+        const campoCantante = document.getElementById('cantante')
+        const campoGenere = document.getElementById('genere')
+        const campoAnno = document.getElementById('anno')
+        
+        const btnAdd = document.getElementById('btnAdd')
+
+        btnAdd.onclick = function () {
+            
+            const oggetto = {
+                titolo: campoTitolo.value,  
+                cantante: campoCantante.value,  
+                genere: campoGenere.value,  
+                anno: campoAnno.value,  
+            }
+
+            fetch(URL, {
+                method: 'post',
+                body: JSON.stringify(oggetto),
+                headers: {
+                "Content-Type": "application/json",
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
+                .then(res=>res.json())
+                .then(res => { console.log('record inserito', res); refresh(); })
+                
+
+
+        }
+
+        function refresh() {
+            fetch(URL)
+                .then(res => res.json())
+                .then(res => {
+    
+                    for (const canzone of res) {
+                        
+                        const TR = document.createElement('tr')
+                        const TD1 = document.createElement('td')
+                        TD1.textContent = canzone.id
+                        const TD2 = document.createElement('td')
+                        TD2.textContent = canzone.titolo
+                        const TD3 = document.createElement('td')
+                        TD3.textContent = canzone.genere
+                        TD3.textContent = canzone.anno
+    
+                        TR.append(TD1, TD2, TD3)
+    
+                        TABELLA.append(TR)
+    
+    
+                    }
+    
+    
+    
+                })
+            
+        }
+
+        document.onload = function () {} 
+            refresh()
+            
+        
+
+    </script>
+
+</body>
+</html>
