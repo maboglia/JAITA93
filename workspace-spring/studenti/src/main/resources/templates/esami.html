@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1 th:text="${titoloPagina}">Studenti</h1>
+	
+	<form method="post" action="esami" th:action="@{/esami}">
+		
+		<select name="studente" id="studente">
+			<option>Scegli studente</option>
+		</select>
+
+		<select name="corso" id="corso">
+			<option>Scegli corso</option>
+		</select>
+		
+		
+		<input type="number" name="voto" placeholder="voto"><br> 
+		<input type="date" name="dataEsame" placeholder="data"><br> 
+		<button>Registra esame</button>
+	</form>
+	
+	
+	<table>
+		<tr>
+			<th>Studente</th>
+			<th>Corso</th>
+			<th>Voto</th>
+			<th>Data</th>
+		</tr>
+		
+		<tr th:each="e : ${tuttigliesami}">
+			<td th:text="${e.studente.cognome}">pippo</td>
+			<td th:text="${e.corso.nome}">pippo</td>
+			<td th:text="${e.voto}">pippo</td>
+			<td th:text="${e.dataEsame}">pippo</td>
+		</tr>
+	</table>
+	
+	
+	<script>
+
+		const URL_STUDENTI = 'http://localhost:9003/api/studenti'
+		const URL_CORSI = 'http://localhost:9003/api/corsi'
+
+		const TENDINA_STUDENTI = document.getElementById('studente')
+		const TENDINA_CORSI = document.getElementById('corso')
+
+		fetch(URL_STUDENTI)
+			.then(res=>res.json())
+			.then(res=>{
+				for (const s of res) {
+					const option = document.createElement('option')
+					option.value=s.id
+					option.textContent = s.nome
+					TENDINA_STUDENTI.append(option)
+				}
+			})
+
+			fetch(URL_CORSI)
+			.then(res=>res.json())
+			.then(res=>{
+				for (const c of res) {
+					const option = document.createElement('option')
+					option.value=c.id
+					option.textContent = c.nome
+					TENDINA_CORSI.append(option)
+				}
+			})
+
+	</script>
+	
+</body>
+</html>

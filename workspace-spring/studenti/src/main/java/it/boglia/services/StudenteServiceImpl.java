@@ -1,6 +1,7 @@
 package it.boglia.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,6 +53,22 @@ public class StudenteServiceImpl implements StudenteService, CorsoService, Esame
 	@Override
 	public Corso addCorso(Corso c) {
 		return daoCorsi.save(c);
+	}
+
+	@Override
+	public List<Esame> getEsamiByVoti(int min, int max) {
+		// TODO Auto-generated method stub
+		return daoEsami.findByVotoBetween(min, max);
+	}
+
+	@Override
+	public Studente getStudenteById(int id) {
+		
+		Optional<Studente> s = dao.findById(id);
+		if (s.isPresent())
+			return s.get();
+		
+		return null;
 	}
 
 }

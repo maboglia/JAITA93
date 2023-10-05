@@ -1,6 +1,9 @@
 package it.boglia.entities;
 
+import java.io.Serializable;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,6 +26,7 @@ public class Studente {
 	private String cognome;
 	
 	@OneToMany(mappedBy = "studente")
+//	@JsonIgnore
     Set<Esame> esami;
 	
 	

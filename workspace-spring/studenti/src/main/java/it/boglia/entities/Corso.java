@@ -2,6 +2,8 @@ package it.boglia.entities;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,10 +27,10 @@ public class Corso {
 	@OneToMany(mappedBy = "corso")
     Set<Esame> esami;
 	
-	
-//	public Set<Esame> getEsami() {
-//		return esami;
-//	}
+	@JsonIgnore
+	public Set<Esame> getEsami() {
+		return esami;
+	}
 //	public void setEsami(Set<Esame> esami) {
 //		this.esami = esami;
 //	}

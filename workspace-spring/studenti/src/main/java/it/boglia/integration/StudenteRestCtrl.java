@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,17 @@ public class StudenteRestCtrl {
 		return service.getStudenti();
 	}
 	
+	@GetMapping("studenti/{id}")
+	Studente getStudenteById(@PathVariable int id){
+		if (service.getStudenteById(id)!=null)
+		
+			return service.getStudenteById(id);
+		
+		return new Studente();
+	}
+	
+	
+	
 	@GetMapping("esami")
 	List<Esame> getEsami(){
 		return esameService.getEsami();
@@ -52,6 +64,11 @@ public class StudenteRestCtrl {
 	@PostMapping("studenti")
 	Studente addStudente(@RequestBody  Studente s) {
 		return service.addStudente(s);
+	}
+	
+	@GetMapping("esami/{min}/{max}")
+	List<Esame> getEsamiRange(@PathVariable("min") int min, @PathVariable("max") int max){
+		return esameService.getEsamiByVoti(min, max);
 	}
 	
 }
