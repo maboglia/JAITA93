@@ -1,9 +1,12 @@
 package it.boglia.services;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,8 +38,22 @@ public class PopolazioneServiceImpl implements PopolazioneService {
 	
 	@Override
 	public List<String> getRegioni() {
-		// TODO Auto-generated method stub
-		return null;
+//		
+//		Set<String> regioniSet = new TreeSet<String>();
+//		for (Provincia p : getProvinceMap().values()) {
+//			regioniSet.add(p.getRegione());
+//		}
+//		
+//		List<String> regioni = new ArrayList<String>(regioniSet);
+//		return regioni;
+	
+		return getProvinceMap()
+				.values()//collection provincia
+				.stream()//trasformo in stream
+				.map(p -> p.getRegione())//prendo solo una proprietà dall'oggetto
+				.distinct()//eleimino i duplicati
+				.sorted()//ordino (string impl comparable)
+				.toList();//converto in una list string
 	}
 
 	@Override
