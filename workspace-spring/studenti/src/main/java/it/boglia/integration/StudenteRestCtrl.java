@@ -3,6 +3,8 @@ package it.boglia.integration;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,12 +38,12 @@ public class StudenteRestCtrl {
 	}
 	
 	@GetMapping("studenti/{id}")
-	Studente getStudenteById(@PathVariable int id){
+	ResponseEntity<Studente> getStudenteById(@PathVariable int id){
 		if (service.getStudenteById(id)!=null)
 		
-			return service.getStudenteById(id);
-		
-		return new Studente();
+		return	new ResponseEntity<Studente>(HttpStatusCode.valueOf(200));
+
+		return new ResponseEntity<Studente>(HttpStatusCode.valueOf(404));
 	}
 	
 	
